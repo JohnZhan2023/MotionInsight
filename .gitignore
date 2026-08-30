@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.venv/
+.idea/
+.vscode/
+outputs/
+checkpoints/*
+!checkpoints/.gitkeep
+*.jsonl
+*.egg-info/
+thirdparty/**/__pycache__/
+thirdparty/vipe/vipe_results/
+thirdparty/vipe/*.so

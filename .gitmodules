@@ -1,0 +1,9 @@
+[submodule "thirdparty/co-tracker"]
+	path = thirdparty/co-tracker
+	url = https://github.com/JohnZhan2023/co-tracker.git
+[submodule "thirdparty/sam3"]
+	path = thirdparty/sam3
+	url = https://github.com/JohnZhan2023/sam3.git
+[submodule "thirdparty/vipe"]
+	path = thirdparty/vipe
+	url = https://github.com/JohnZhan2023/vipe.git

@@ -1,0 +1,16 @@
+torch>=2.7.0
+torchvision>=0.22.0
+transformers==4.57.1
+accelerate>=1.2.1
+qwen-vl-utils==0.0.10
+decord>=0.6.0
+numpy>=1.26.0
+pillow>=10.0.0
+safetensors>=0.4.0
+imageio[ffmpeg]>=2.34.0
+opencv-python>=4.10.0
+omegaconf>=2.3.0
+datasets>=3.2.0
+deepspeed>=0.15.4
+trl==0.23.1
+wandb>=0.19.1
