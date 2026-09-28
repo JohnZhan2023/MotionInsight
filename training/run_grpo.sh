@@ -42,7 +42,7 @@ torchrun --nproc_per_node=8 --nnodes=1 --node_rank=0 \
   --gradient_checkpointing true \
   --temporal false \
   --len_control true \
-  --attn_implementation flash_attention_2 \
+  --attn_implementation "${ATTN_IMPLEMENTATION:-flash_attention_2}" \
   --max_pixels 262144 \
   --num_train_epochs 5 \
   --run_name MotionInsight-multidim-all \

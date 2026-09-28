@@ -1,25 +1,81 @@
-# MotionInsight: Diagnosing Object Motion Deficiencies in Generated Videos
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/motioninsight-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/motioninsight-light.svg">
+    <img src="assets/motioninsight-light.svg" alt="MotionInsight — object motion diagnosis" width="100%">
+  </picture>
+</p>
 
-**Jiahao Zhan, Yongrui Ma, Qunliang Xing, Xuanyu Zhang, Jingqi Tong, Junlin Li, Li Zhang, Shijie Zhao, Tianfan Xue**
+<h1 align="center">MotionInsight: Diagnosing Object Motion<br>Deficiencies in Generated Videos</h1>
 
-[Paper](paper.pdf)
+<p align="center"><strong>EMNLP 2026 Findings</strong></p>
+
+<p align="center">
+  Jiahao Zhan<sup>1,2</sup>, Yongrui Ma<sup>1,2</sup>, Qunliang Xing<sup>2</sup>, Xuanyu Zhang<sup>4</sup>,<br>
+  Jingqi Tong<sup>3</sup>, Junlin Li<sup>2</sup>, Li Zhang<sup>2</sup>, Shijie Zhao<sup>2,†,✉</sup>, Tianfan Xue<sup>1,5,✉</sup>
+</p>
+<p align="center">
+  <sup>1</sup>MMLab, CUHK &nbsp; <sup>2</sup>ByteDance Inc. &nbsp; <sup>3</sup>Fudan University<br>
+  <sup>4</sup>Peking University &nbsp; <sup>5</sup>CPII under InnoHK<br>
+  <sub>† Project Lead &nbsp; ✉ Corresponding Authors</sub>
+</p>
+
+<p align="center">
+  <a href="paper.pdf"><img src="https://img.shields.io/badge/Paper-PDF-d95757?style=for-the-badge" alt="Paper PDF"></a>
+  <a href="https://huggingface.co/JohnZhan/MotionInsight-8B"><img src="https://img.shields.io/badge/Hugging_Face-Models-e6aa32?style=for-the-badge&amp;logo=huggingface&amp;logoColor=white" alt="Hugging Face Models"></a>
+  <a href="#installation"><img src="https://img.shields.io/badge/Get_Started-Installation-138a7b?style=for-the-badge" alt="Installation"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-526b81?style=for-the-badge" alt="Apache 2.0 License"></a>
+</p>
+
+<p align="center">
+  <a href="#overview">Overview</a> ·
+  <a href="#extract-motion-features">Preprocessing</a> ·
+  <a href="#inference">Inference</a> ·
+  <a href="#training">Training</a> ·
+  <a href="#citation">Citation</a>
+</p>
+
+## Overview
+
+**From observing frames to diagnosing motion.** MotionInsight evaluates a designated
+object in a generated video, explaining where its motion fails and scoring three
+complementary dimensions of motion fidelity.
+
+<p align="center">
+  <img src="assets/motion-failures.png" width="100%" alt="Motion failures from the paper: a volleyball rises without contact, a tennis ball teleports, and a bumper car changes orientation inconsistently.">
+</p>
+<p align="center"><sub>Visually plausible frames can hide implausible motion. Examples from Figure 1 of the paper.</sub></p>
 
 MotionInsight is an object-centric diagnostic evaluator for generated-video motion. It combines sampled RGB frames with explicit object-motion features from SAM3 and CoTracker3 and camera poses from VIPE. The released Qwen3-VL-8B checkpoint produces diagnostic reasoning and three continuous scores from **1.0 (poor)** to **5.0 (excellent)**.
 
-The paper evaluates:
-
-- **Object consistency**: stable identity, appearance, and structure during motion.
-- **Motion continuity**: smooth, continuous trajectories without abrupt jumps or jitter.
-- **Physical plausibility**: motion consistent with forces and basic physical dynamics.
+| Dimension | What does MotionInsight diagnose? |
+|---|---|
+| **Object consistency** | Changes in identity, appearance, or structure during motion. |
+| **Motion continuity** | Abrupt jumps, jitter, and discontinuous trajectories. |
+| **Physical plausibility** | Motion that conflicts with forces, contact, or basic physical dynamics. |
 
 The released checkpoint uses legacy JSON field names from training. `structural_stability` corresponds to object consistency, and `motion_coherence` corresponds to motion continuity.
 
-This repository does **not** release VidMotion, its videos, or annotations. It contains model inference, paper-setting training code, motion-feature extraction, the checkpoint, and required third-party source trees.
+This repository does **not** release VidMotion, its videos, or annotations. It contains inference, training, motion-feature extraction, and pinned third-party submodules. Model weights are hosted on [Hugging Face](https://huggingface.co/JohnZhan/MotionInsight-8B).
+
+### Method
+
+MotionInsight combines sampled RGB observations with explicit target-object tracks
+and camera motion. Motion-description alignment connects the motion representations
+to the VLM, followed by motion-specific GRPO for diagnostic assessment.
+
+<p align="center">
+  <img src="assets/method-overview.png" width="100%" alt="Paper method overview: tracking features and camera poses are encoded into motion embeddings and interleaved with visual tokens for Qwen3-VL.">
+</p>
+<p align="center"><sub>Method overview from Figure 2. See <a href="TRAINING.md">the training guide</a> for the released implementation.</sub></p>
 
 ## Repository layout
 
 ```text
-MotionInsight-OpenSource/
+MotionInsight/
+├── assets/                             # logo and paper figures
+├── docs/INSTALL.md                     # two-environment setup
+├── requirements/                       # preprocessing, inference, training
 ├── checkpoints/                        # download MotionInsight-8B here
 ├── motion_features/
 │   ├── extract_object_motion.py        # SAM3 + CoTracker3
@@ -47,27 +103,31 @@ training arguments are excluded.
 
 ## Installation
 
-Python 3.12 or later and CUDA are recommended for the complete extraction and inference pipeline, matching SAM3's documented environment.
+Use **separate Python 3.10 environments** for preprocessing and training/inference.
+The dependency files are based on the two supplied environments, with public
+replacements for internal packages and a documented Hub-version correction.
+
+| Environment | PyTorch / CUDA | Transformers | Requirements |
+|---|---|---|---|
+| Preprocessing | 2.7.0 / 12.8 | 4.48.3 | [preprocess.txt](requirements/preprocess.txt) |
+| Training / inference | 2.11.0 / 12.6 | 4.57.1 + motion patch | [train.txt](requirements/train.txt) |
+| Inference only | 2.11.0 / 12.6 | 4.57.1 + motion patch | [inference.txt](requirements/inference.txt) |
+
+**Start with [the installation guide](docs/INSTALL.md)** for both environments,
+CUDA extension builds, and attention-backend options. No virtual environments,
+compiled extensions, extracted data, or model weights are committed to GitHub.
+
+For inference on already extracted features:
 
 ```bash
 git clone --recurse-submodules https://github.com/JohnZhan2023/MotionInsight.git
 cd MotionInsight
-
-python -m venv .venv
-source .venv/bin/activate
-pip install -U pip
-pip install -r requirements.txt
-
-# Install the vendored feature extractors and their dependencies.
-pip install -e thirdparty/co-tracker
-pip install -e thirdparty/sam3
-pip install -e thirdparty/vipe
-```
-
-For an existing clone, initialize the dependencies with:
-
-```bash
-git submodule update --init --recursive
+python3.10 -m venv .venv-model
+source .venv-model/bin/activate
+python -m pip install --upgrade pip
+python -m pip install torch==2.11.0 torchvision==0.26.0 \
+  --index-url https://download.pytorch.org/whl/cu126
+python -m pip install -r requirements/inference.txt
 ```
 
 ### Download the checkpoint
@@ -104,6 +164,8 @@ Restart existing Python processes after installing or restoring the patch.
 
 ## Extract motion features
 
+Run these commands in `.venv-preprocess` after completing [preprocessing setup](docs/INSTALL.md#1-preprocessing).
+
 The third-party model weights are not bundled. Download the SAM3 checkpoint after accepting its access terms, and download the CoTracker3 scaled offline checkpoint following the respective third-party READMEs:
 
 - [SAM3 checkpoint instructions](thirdparty/sam3/README.md)
@@ -132,6 +194,8 @@ python motion_features/extract_camera_motion.py \
 Object feature files contain `x: [1, N, T, 1110]` and `confidence: [1, T, N]`. Camera files contain one `[4, 4]` pose matrix per frame. Do not alter the video timeline after extracting these features.
 
 ## Inference
+
+Activate `.venv-model` before running inference.
 
 Validate the release checkpoint:
 
@@ -175,6 +239,10 @@ The released setting uses `--frame_stride 16` and deterministic decoding.
 
 ## Training
 
+Install [training dependencies](docs/INSTALL.md#2-training-and-inference) in `.venv-model`.
+The launchers default to FlashAttention 2; set `ATTN_IMPLEMENTATION=sdpa` to use
+PyTorch attention without installing a separate FlashAttention extension.
+
 The two released training stages follow the paper setting: modality alignment for
 3 epochs and multi-task GRPO for 5 epochs on 8 NVIDIA A100 GPUs, both at learning
 rate `1e-6`. GRPO uses 8 sampled responses, KL coefficient `0.001`, and asymmetric
@@ -212,9 +280,10 @@ See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) before redistribution. In p
 ## Citation
 
 ```bibtex
-@misc{zhan2026motioninsight,
+@inproceedings{zhan2026motioninsight,
   title  = {MotionInsight: Diagnosing Object Motion Deficiencies in Generated Videos},
   author = {Zhan, Jiahao and Ma, Yongrui and Xing, Qunliang and Zhang, Xuanyu and Tong, Jingqi and Li, Junlin and Li, Zhang and Zhao, Shijie and Xue, Tianfan},
+  booktitle = {Findings of the Association for Computational Linguistics: EMNLP 2026},
   year   = {2026}
 }
 ```

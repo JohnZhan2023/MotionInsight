@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="310" viewBox="0 0 1200 310" role="img" aria-labelledby="title desc">
+<title id="title">MotionInsight</title><desc id="desc">Tracking a moving object across video frames with a magnifying glass for motion diagnosis.</desc>
+<g transform="translate(46 50)"><g fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="20" y="60" width="78" height="110" rx="13" fill="#e9f6f4" stroke="#a6d8d1" stroke-width="6"/>
+  <rect x="68" y="43" width="82" height="127" rx="13" fill="#e9f6f4" stroke="#58b5a8" stroke-width="6"/>
+  <rect x="118" y="26" width="88" height="144" rx="13" fill="#f5fbfa" stroke="#138a7b" stroke-width="6"/>
+  <path d="M42 143 C75 126 93 133 115 100 S147 79 168 70" stroke="#16a28b" stroke-width="6"/>
+  <circle cx="43" cy="143" r="8" fill="#58b5a8" stroke="#fff" stroke-width="3"/>
+  <circle cx="96" cy="122" r="8" fill="#138a7b" stroke="#fff" stroke-width="3"/>
+  <circle cx="172" cy="79" r="48" fill="#fff" fill-opacity="0.94" stroke="#edf5fa" stroke-width="9"/>
+  <path d="M207 115 L236 145" stroke="#edf5fa" stroke-width="16"/>
+  <path d="M139 101 Q153 65 171 79" stroke="#138a7b" stroke-width="5"/>
+  <path d="M176 80 L195 57" stroke="#eead38" stroke-width="4" stroke-dasharray="3 8"/>
+  <circle cx="172" cy="79" r="10" fill="#f5af35" stroke="#fff" stroke-width="3"/>
+  <path d="M160 58 L160 52 L183 52 L183 58 M160 100 L160 106 L183 106 L183 100" stroke="#e5a12f" stroke-width="3"/>
+</g></g>
+<text x="323" y="166" font-family="DejaVu Sans,Arial,sans-serif" font-weight="700" font-size="94" letter-spacing="-4" fill="#edf5fa">Motion<tspan fill="#138a7b">Insight</tspan></text>
+<text x="329" y="211" font-family="DejaVu Sans,Arial,sans-serif" font-size="20" letter-spacing="3" fill="#a9bccb">SEE THE MOTION. UNDERSTAND THE FAILURE.</text>
+</svg>

@@ -51,7 +51,7 @@ Consistency and Motion Continuity in the paper.
 
 ## Environment
 
-Install the repository dependencies and the motion-aware Qwen3-VL module:
+Create and activate `.venv-model` following [docs/INSTALL.md](docs/INSTALL.md#2-training-and-inference), including the CUDA 12.6 PyTorch installation. Then install the training dependencies and the motion-aware Qwen3-VL module:
 
 ```bash
 pip install -r requirements.txt
@@ -62,6 +62,12 @@ python scripts/patch_transformers.py --check
 Training expects a Qwen3-VL-8B-Instruct-compatible base model. The alignment
 launcher adds `<|motion|>` to the tokenizer, freezes the VLM backbone, and trains
 only `motion_projector`, `camera_motion_projector`, and `motion_fusion`.
+
+The default attention backend is FlashAttention 2. A matching compiled extension
+is required; the original environment's existing extension is incompatible with
+its current PyTorch. For a fresh environment without FlashAttention, prefix either
+launcher with `ATTN_IMPLEMENTATION=sdpa`. This changes the execution backend and
+may change speed and memory use. See [attention setup](docs/INSTALL.md#attention-backend).
 
 ## Stage 1: modality alignment
 

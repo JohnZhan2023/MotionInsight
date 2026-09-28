@@ -1,0 +1,37 @@
+# Python 3.10; derived from the supplied preprocessing environment.
+# Install the CUDA 12.8 PyTorch wheels first; see docs/INSTALL.md.
+torch==2.7.0
+torchvision==0.22.0
+numpy==1.26.4
+pillow==11.0.0
+transformers==4.48.3
+tokenizers==0.21.0
+# The source environment's hub 0.25.1 violates Transformers' >=0.26 requirement.
+huggingface-hub==0.36.2
+safetensors==0.4.5
+decord==0.6.0
+imageio[ffmpeg]==2.37.0
+imageio-ffmpeg==0.6.0
+opencv-python==4.11.0.86
+einops==0.8.1
+omegaconf==2.3.0
+hydra-core==1.3.2
+timm==1.0.26
+ftfy==6.1.1
+iopath==0.1.10
+regex==2024.9.11
+tqdm==4.66.5
+scipy==1.15.1
+matplotlib==3.8.4
+pycocotools==2.0.11
+rerun-sdk==0.22.0
+python-pycg==0.10.1
+gdown==5.2.0
+OpenEXR==3.2.4
+kornia==0.8.0
+viser==1.0.1
+click==8.1.8
+ninja==1.11.1.4
+setuptools==70.2.0
+wheel==0.46.3
+# Install the pinned repository submodules separately, with these constraints.

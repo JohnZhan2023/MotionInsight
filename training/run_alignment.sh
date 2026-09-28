@@ -37,7 +37,7 @@ torchrun --nproc_per_node=8 --nnodes=1 --node_rank=0 \
   --bf16 true \
   --report_to none \
   --gradient_checkpointing true \
-  --attn_implementation flash_attention_2 \
+  --attn_implementation "${ATTN_IMPLEMENTATION:-flash_attention_2}" \
   --num_train_epochs 3 \
   --save_strategy epoch \
   --run_name MotionInsight-alignment \

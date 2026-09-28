@@ -1,0 +1,12 @@
+-r inference.txt
+datasets==4.8.4
+deepspeed==0.18.8
+trl==0.23.1
+peft==0.18.1
+# Public replacement for the internal wandb distribution in the source environment.
+wandb==0.19.11
+ninja==1.13.0
+packaging==26.0
+setuptools==80.10.2
+wheel==0.46.3
+# FlashAttention is a separate CUDA build; do not reuse the source .so file.

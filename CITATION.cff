@@ -25,3 +25,28 @@ version: 0.1.0
 date-released: 2026-08-30
 license: Apache-2.0
 
+repository-code: "https://github.com/JohnZhan2023/MotionInsight"
+preferred-citation:
+  type: conference-paper
+  title: "MotionInsight: Diagnosing Object Motion Deficiencies in Generated Videos"
+  authors:
+    - family-names: Zhan
+      given-names: Jiahao
+    - family-names: Ma
+      given-names: Yongrui
+    - family-names: Xing
+      given-names: Qunliang
+    - family-names: Zhang
+      given-names: Xuanyu
+    - family-names: Tong
+      given-names: Jingqi
+    - family-names: Li
+      given-names: Junlin
+    - family-names: Li
+      given-names: Zhang
+    - family-names: Zhao
+      given-names: Shijie
+    - family-names: Xue
+      given-names: Tianfan
+  collection-title: "Findings of the Association for Computational Linguistics: EMNLP 2026"
+  year: 2026
