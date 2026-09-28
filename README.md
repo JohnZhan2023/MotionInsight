@@ -132,7 +132,7 @@ python -m pip install -r requirements/inference.txt
 
 ### Download the checkpoint
 
-Download the released `multidim-all/checkpoint-5500` from
+Download the released **MotionInsight-8B** model from
 [JohnZhan/MotionInsight-8B](https://huggingface.co/JohnZhan/MotionInsight-8B):
 
 ```bash

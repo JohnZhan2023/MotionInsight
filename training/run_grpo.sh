@@ -45,7 +45,7 @@ torchrun --nproc_per_node=8 --nnodes=1 --node_rank=0 \
   --attn_implementation "${ATTN_IMPLEMENTATION:-flash_attention_2}" \
   --max_pixels 262144 \
   --num_train_epochs 5 \
-  --run_name MotionInsight-multidim-all \
+  --run_name MotionInsight-GRPO \
   --save_steps 500 \
   --beta 0.001 \
   --reward_funcs accuracy \
