@@ -1,5 +1,5 @@
-# Python 3.10; derived from the supplied training/inference environment.
-# Install the CUDA 12.6 PyTorch wheels first; see docs/INSTALL.md.
+# Python 3.10; inference dependencies.
+# Install the CUDA 12.6 PyTorch wheels first; see README.md.
 torch==2.11.0
 torchvision==0.26.0
 transformers==4.57.1

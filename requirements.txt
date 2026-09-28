@@ -1,3 +1,2 @@
-# Training + inference. Use a separate environment for preprocessing.
-# Install PyTorch with the CUDA index in docs/INSTALL.md before this file.
--r requirements/train.txt
+# Default environment: inference. Install CUDA PyTorch as shown in README.md.
+-r requirements/inference.txt

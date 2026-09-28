@@ -1,7 +1,26 @@
 MotionInsight
 Copyright 2026 ByteDance Ltd. and/or its affiliates
 
-This distribution includes software and model components derived from Qwen3-VL,
-Hugging Face Transformers, and the projects listed in THIRD_PARTY_NOTICES.md.
-Third-party components retain their original licenses and are not relicensed by
-the root Apache License 2.0.
+This distribution includes components derived from Qwen3-VL, Hugging Face
+Transformers, and the projects below. Third-party components retain their own
+licenses and are not relicensed by the root Apache License 2.0.
+
+CoTracker: https://github.com/JohnZhan2023/co-tracker
+Revision ca0a716 (based on upstream 82e02e8); CC BY-NC 4.0.
+License: thirdparty/co-tracker/LICENSE.md
+
+SAM3: https://github.com/JohnZhan2023/sam3
+Revision 828a87a (based on upstream 86ed770); SAM License.
+License: thirdparty/sam3/LICENSE
+
+VIPE: https://github.com/JohnZhan2023/vipe
+Revision 7e66b5a; Apache-2.0.
+License: thirdparty/vipe/LICENSE
+Additional notices: thirdparty/vipe/THIRD_PARTY_LICENSES.md
+
+The CoTracker and SAM3 forks include compatibility changes for MotionInsight.
+Initialize the pinned submodules with git submodule update --init --recursive
+to obtain their source and license texts.
+
+Files under training/ adapt Apache-2.0-licensed Hugging Face TRL and R1-V code.
+Their retained source headers identify the applicable copyright and license terms.

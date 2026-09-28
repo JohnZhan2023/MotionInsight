@@ -1,12 +1,12 @@
-# Python 3.10; derived from the supplied preprocessing environment.
-# Install the CUDA 12.8 PyTorch wheels first; see docs/INSTALL.md.
+# Python 3.10; preprocessing dependencies.
+# Install the CUDA 12.8 PyTorch wheels first; see README.md.
 torch==2.7.0
 torchvision==0.22.0
 numpy==1.26.4
 pillow==11.0.0
 transformers==4.48.3
 tokenizers==0.21.0
-# The source environment's hub 0.25.1 violates Transformers' >=0.26 requirement.
+# Hub version compatible with the pinned Transformers release.
 huggingface-hub==0.36.2
 safetensors==0.4.5
 decord==0.6.0
