@@ -1,8 +1,8 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/motioninsight-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/motioninsight-light.svg">
-    <img src="assets/motioninsight-light.svg" alt="MotionInsight — object motion diagnosis" width="100%">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/motioninsight-header-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/motioninsight-header-light.svg">
+    <img src="assets/motioninsight-header-light.svg" alt="MotionInsight — object motion diagnosis" width="100%">
   </picture>
 </p>
 
