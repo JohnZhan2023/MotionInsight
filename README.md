@@ -143,7 +143,7 @@ hf download JohnZhan/MotionInsight-8B \
 The resulting `checkpoints/MotionInsight-8B` directory is the default model path
 used by `inference.py`.
 
-The checkpoint stores approximately 18.7 GB of BF16 weights. At least 24 GB of GPU memory may work for short videos; 32 GB or more is recommended.
+The checkpoint stores approximately 17.7 GB of BF16 weights. At least 24 GB of GPU memory may work for short videos; 32 GB or more is recommended.
 
 ### Install the motion-aware Qwen3-VL implementation
 
