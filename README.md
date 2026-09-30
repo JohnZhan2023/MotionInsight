@@ -21,7 +21,7 @@
 </p>
 
 <p align="center">
-  <a href="paper.pdf"><img src="https://img.shields.io/badge/Paper-PDF-d95757?style=for-the-badge" alt="Paper PDF"></a>
+  <a href="https://arxiv.org/abs/2609.37030"><img src="https://img.shields.io/badge/arXiv-2609.37030-d95757?style=for-the-badge" alt="arXiv 2609.37030"></a>
   <a href="https://huggingface.co/JohnZhan/MotionInsight-8B"><img src="https://img.shields.io/badge/Hugging_Face-Models-e6aa32?style=for-the-badge&amp;logo=huggingface&amp;logoColor=white" alt="Hugging Face Models"></a>
   <a href="#installation"><img src="https://img.shields.io/badge/Get_Started-Installation-138a7b?style=for-the-badge" alt="Installation"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-526b81?style=for-the-badge" alt="Apache 2.0 License"></a>
@@ -160,7 +160,8 @@ Each JSONL record contains the video, motion features, target object, question, 
   title  = {MotionInsight: Diagnosing Object Motion Deficiencies in Generated Videos},
   author = {Zhan, Jiahao and Ma, Yongrui and Xing, Qunliang and Zhang, Xuanyu and Tong, Jingqi and Li, Junlin and Li, Zhang and Zhao, Shijie and Xue, Tianfan},
   booktitle = {Findings of the Association for Computational Linguistics: EMNLP 2026},
-  year   = {2026}
+  year   = {2026},
+  url = {https://arxiv.org/abs/2609.37030}
 }
 ```
 
