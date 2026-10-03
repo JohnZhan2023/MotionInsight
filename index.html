@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MotionInsight: Diagnosing Object Motion Deficiencies in Generated Videos. Research overview, video comparisons, and motion-guided DPO post-training.">
+  <title>MotionInsight</title>
+  <link rel="icon" href="assets/motioninsight-icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=wide-header-20261003">
+</head>
+<body>
+  <a class="skip-link" href="#comparisons">Skip to video comparisons</a>
+  <main>
+    <header class="publication-header container">
+      <h1><img src="assets/motioninsight-icon.svg" alt="" width="136" height="118">MotionInsight</h1>
+      <h2 class="publication-subtitle">Diagnosing Object Motion Deficiencies in Generated Videos</h2>
+      <p class="authors"><span><a href="https://johnzhan2023.github.io/" target="_blank" rel="noopener noreferrer">Jiahao Zhan</a><sup>1,2</sup></span>, <span><a href="https://sites.google.com/view/yongrayma" target="_blank" rel="noopener noreferrer">Yongrui Ma</a><sup>1,2</sup></span>, <span><a href="https://ryanxingql.github.io/" target="_blank" rel="noopener noreferrer">Qunliang Xing</a><sup>2</sup></span>, <span><a href="https://xuanyuzhang21.github.io/" target="_blank" rel="noopener noreferrer">Xuanyu Zhang</a><sup>4</sup></span>, <span><a href="https://tongjingqi.github.io/" target="_blank" rel="noopener noreferrer">Jingqi Tong</a><sup>3</sup></span>, <span><a href="https://villa.jianzhang.tech/people/junlin-li/" target="_blank" rel="noopener noreferrer">Junlin Li</a><sup>2</sup></span>, <span><a href="https://scholar.google.com/citations?user=8G5-2OMAAAAJ" target="_blank" rel="noopener noreferrer">Li Zhang</a><sup>2</sup></span>, <span><a href="https://cn.linkedin.com/in/shijie-zhao-bb017a110" target="_blank" rel="noopener noreferrer">Shijie Zhao</a><sup>2,†,✉</sup></span>, <span><a href="https://tianfan.info/" target="_blank" rel="noopener noreferrer">Tianfan Xue</a><sup>1,5,✉</sup></span></p>
+      <p class="affiliations"><span><sup>1</sup> MMLab, CUHK</span> <span><sup>2</sup> ByteDance Inc.</span> <span><sup>3</sup> Fudan University</span> <span><sup>4</sup> Peking University</span> <span><sup>5</sup> CPII under InnoHK</span></p>
+      <p class="author-notes">† Project Lead &nbsp; ✉ Corresponding Authors</p>
+      <p class="venue">EMNLP 2026 Findings</p>
+      <div class="publication-links">
+        <a class="resource-button" href="https://arxiv.org/abs/2609.37030" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6"/></svg>Paper</a>
+        <a class="resource-button" href="https://github.com/JohnZhan2023/MotionInsight" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.62 1.22 3.26.93.1-.73.39-1.22.71-1.5-2.5-.28-5.13-1.25-5.13-5.54 0-1.22.44-2.22 1.16-3-.12-.28-.5-1.42.11-2.96 0 0 .95-.3 3.08 1.15a10.67 10.67 0 0 1 5.61 0c2.14-1.45 3.08-1.15 3.08-1.15.61 1.54.23 2.68.11 2.96.73.78 1.16 1.78 1.16 3 0 4.3-2.64 5.26-5.15 5.54.41.35.77 1.03.77 2.08v3.1c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg>Code</a>
+        <a class="resource-button" href="https://huggingface.co/JohnZhan/MotionInsight-8B" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m12 3 9 5v9l-9 5-9-5V8zm0 0v9m-9-4 9 4 9-4m-9 4v10"/></svg>Model</a>
+      </div>
+    </header>
+
+
+    <section class="container paper-section abstract" id="abstract">
+      <h2>Abstract</h2>
+      <p>MotionInsight evaluates the fidelity of designated objects in generated videos through object consistency, motion continuity, and physical plausibility. We introduce VidMotion, a dataset with dimension-specific quality scores and annotations of motion failures. Our evaluator combines sampled RGB frames with explicit representations of object trajectories and camera motion to identify temporal deficiencies that can be difficult to detect from appearance alone. Motion description alignment connects these representations to a vision-language model, while motion-specific GRPO rewards improve scoring and diagnostic explanations. Experiments show strong agreement with human assessments. We further use MotionInsight scores to construct preference pairs for DPO post-training of a video generator, improving human preference for motion fidelity and overall video quality.</p>
+    </section>
+
+    <section class="container paper-section" id="overview">
+      <h2>Overview</h2>
+      <figure><button class="figure-button" id="enlarge-figure" type="button" aria-label="Enlarge MotionInsight framework"><img src="assets/method-overview.png" alt="MotionInsight combines object tracking features and camera poses with RGB visual tokens through attention pooling and a Motion Adapter, then inputs them into Qwen 3 VL." width="1374" height="477" loading="lazy"></button><figcaption><strong>Overview of MotionInsight.</strong> Object tracking features and camera poses are fused into motion representations, then interleaved with RGB visual tokens. This explicit motion information supports object-level diagnosis along three dimensions: <em>object consistency</em>, <em>motion continuity</em>, and <em>physical plausibility</em>. Click the figure to enlarge it.</figcaption></figure>
+    </section>
+
+    <section class="container paper-section" id="post-training">
+      <h2>MotionInsight for Video Generation</h2>
+      <p>We use MotionInsight as a reward model to construct preference pairs for DPO post-training of Wan2.1-T2V-1.3B. For each prompt, eight candidate videos are sampled. Each salient object receives scores across the three motion dimensions; the normalized scores are multiplied, and the lowest object reward is used as the video reward. The highest- and lowest-reward videos form a preference pair.</p>
+      <p class="table-intro">In a two-alternative forced-choice (2AFC) study with 20 volunteers, MotionInsight-DPO is preferred over both the original Wan 2.1 model and VideoPhy2-DPO.</p>
+      <div class="table-wrap"><table><caption>Human preference for MotionInsight-DPO (%)</caption><thead><tr><th scope="col">Compared against</th><th scope="col">Motion fidelity</th><th scope="col">Overall quality</th></tr></thead><tbody><tr><th scope="row">Wan 2.1</th><td>92.86</td><td>86.67</td></tr><tr><th scope="row">VideoPhy2-DPO</th><td>87.56</td><td>87.50</td></tr></tbody></table></div>
+    </section>
+
+    <section class="container paper-section comparisons" id="comparisons" aria-labelledby="comparisons-title">
+      <h2 id="comparisons-title">Video Generation Comparisons</h2>
+      <p class="section-intro">Explore 16 examples of generated videos. Each clip compares three outputs for the same prompt on a shared timeline. Select a thumbnail to view another example.</p>
+      <div class="thumbnail-strip" id="thumbnail-strip" role="group" aria-label="Select a video example"></div>
+      <div class="example-heading"><h3 id="example-title">Horse Jumping an Obstacle</h3><span id="example-count">8 / 16</span></div>
+      <div class="comparison-labels" id="comparison-labels" aria-label="Video model names, left to right"><div><strong>Wan</strong></div><div><strong>DPO baseline</strong></div><div><strong>MotionInsight-DPO (Ours)</strong></div></div>
+      <video id="comparison-video" controls muted playsinline loop preload="metadata" poster="media/posters/q008.jpg?v=ordered-20261003" src="media/comparisons/q008.mp4?v=ordered-20261003" aria-label="Three generated videos of horse jumping, from left to right Wan, DPO baseline, MotionInsight-DPO (Ours)"></video>
+      <div class="video-error" id="video-error" role="status" hidden>The video could not be loaded. <button id="retry-video" type="button">Try again</button></div>
+      <div class="prompt"><p><strong>Prompt:</strong> <span id="prompt-en">A rider in a black helmet and white shirt, seated on a brown horse, leaning forward during a jump over an obstacle with decorative green and pink plants at its base.</span></p></div>
+      <noscript><p>Enable JavaScript to switch between all 16 examples. The selected video remains playable above.</p></noscript>
+    </section>
+
+    <section class="container paper-section citation-section" id="citation">
+      <div class="citation-heading"><h2>BibTeX</h2><div><a class="plain-button" href="citation.bib?v=arxiv-20261003" download>Download</a><button type="button" class="plain-button" id="copy-citation">Copy</button></div></div>
+      <pre><code id="citation-text">@misc{zhan2026motioninsightdiagnosingobjectmotion,
+  title         = {MotionInsight: Diagnosing Object Motion Deficiencies in Generated Videos},
+  author        = {Jiahao Zhan and Yongrui Ma and Qunliang Xing and Xuanyu Zhang and Jingqi Tong and Junlin Li and Li zhang and Shijie Zhao and Tianfan Xue},
+  year          = {2026},
+  eprint        = {2609.37030},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV},
+  url           = {https://arxiv.org/abs/2609.37030},
+}</code></pre>
+    </section>
+  </main>
+  <footer class="container"><p><a href="https://github.com/JohnZhan2023/MotionInsight" target="_blank" rel="noopener noreferrer">MotionInsight</a> · EMNLP 2026 Findings</p></footer>
+  <dialog id="figure-dialog" aria-labelledby="figure-dialog-title"><div class="dialog-header"><h2 id="figure-dialog-title">MotionInsight Framework</h2><button type="button" id="close-figure" class="plain-button" autofocus>Close</button></div><div class="figure-scroll"><img src="assets/method-overview.png" alt="Enlarged MotionInsight framework diagram" width="1374" height="477"></div></dialog>
+  <p id="toast" role="status" hidden></p>
+  <script src="comparison-data.js?v=ordered-20261003" defer></script>
+  <script src="app.js?v=ordered-20261003" defer></script>
+</body>
+</html>
