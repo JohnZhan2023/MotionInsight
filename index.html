@@ -48,14 +48,14 @@
 
     <section class="container paper-section comparisons" id="comparisons" aria-labelledby="comparisons-title">
       <h2 id="comparisons-title">Video Generation Comparisons</h2>
-      <p class="section-intro">Explore 16 examples of generated videos. Each clip compares three outputs for the same prompt on a shared timeline. Select a thumbnail to view another example.</p>
+      <p class="section-intro">Explore 13 examples of generated videos. Each clip compares three outputs for the same prompt on a shared timeline. Select a thumbnail to view another example.</p>
       <div class="thumbnail-strip" id="thumbnail-strip" role="group" aria-label="Select a video example"></div>
-      <div class="example-heading"><h3 id="example-title">Horse Jumping an Obstacle</h3><span id="example-count">8 / 16</span></div>
+      <div class="example-heading"><h3 id="example-title">Horse Jumping an Obstacle</h3><span id="example-count">6 / 13</span></div>
       <div class="comparison-labels" id="comparison-labels" aria-label="Video model names, left to right"><div><strong>Wan</strong></div><div><strong>DPO baseline</strong></div><div><strong>MotionInsight-DPO (Ours)</strong></div></div>
       <video id="comparison-video" controls muted playsinline loop preload="metadata" poster="media/posters/q008.jpg?v=ordered-20261003" src="media/comparisons/q008.mp4?v=ordered-20261003" aria-label="Three generated videos of horse jumping, from left to right Wan, DPO baseline, MotionInsight-DPO (Ours)"></video>
       <div class="video-error" id="video-error" role="status" hidden>The video could not be loaded. <button id="retry-video" type="button">Try again</button></div>
       <div class="prompt"><p><strong>Prompt:</strong> <span id="prompt-en">A rider in a black helmet and white shirt, seated on a brown horse, leaning forward during a jump over an obstacle with decorative green and pink plants at its base.</span></p></div>
-      <noscript><p>Enable JavaScript to switch between all 16 examples. The selected video remains playable above.</p></noscript>
+      <noscript><p>Enable JavaScript to switch between all 13 examples. The selected video remains playable above.</p></noscript>
     </section>
 
     <section class="container paper-section citation-section" id="citation">
@@ -74,7 +74,7 @@
   <footer class="container"><p><a href="https://github.com/JohnZhan2023/MotionInsight" target="_blank" rel="noopener noreferrer">MotionInsight</a> · EMNLP 2026 Findings</p></footer>
   <dialog id="figure-dialog" aria-labelledby="figure-dialog-title"><div class="dialog-header"><h2 id="figure-dialog-title">MotionInsight Framework</h2><button type="button" id="close-figure" class="plain-button" autofocus>Close</button></div><div class="figure-scroll"><img src="assets/method-overview.png" alt="Enlarged MotionInsight framework diagram" width="1374" height="477"></div></dialog>
   <p id="toast" role="status" hidden></p>
-  <script src="comparison-data.js?v=ordered-20261003" defer></script>
+  <script src="comparison-data.js?v=selected-20261004" defer></script>
   <script src="app.js?v=ordered-20261003" defer></script>
 </body>
 </html>

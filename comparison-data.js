@@ -51,40 +51,6 @@ window.motionInsightComparisons = [
     ]
   },
   {
-    "id": "q004",
-    "title": "滑板车斜坡技巧",
-    "titleEn": "Scooter Ramp Trick",
-    "category": "people",
-    "categoryLabel": "人物动作",
-    "categoryLabelEn": "Human Motion",
-    "prompt": "A person wearing a blue t-shirt, dark pants, and a cap, riding a scooter on a ramp in a skatepark. The scooter has blue wheels and a black frame. The person is leaning forward, maintaining balance while performing a trick on the ramp's edge.",
-    "video": "media/comparisons/q004.mp4?v=ordered-20261003",
-    "poster": "media/posters/q004.jpg?v=ordered-20261003",
-    "thumbnail": "media/thumbnails/q004.jpg?v=ordered-20261003",
-    "methods": [
-      "wan",
-      "dpo",
-      "ours"
-    ]
-  },
-  {
-    "id": "q005",
-    "title": "犬只绕杆",
-    "titleEn": "Dog Weaving Through Poles",
-    "category": "animals",
-    "categoryLabel": "动物交互",
-    "categoryLabelEn": "Animal Interaction",
-    "prompt": "A black and white dog with a fluffy tail and alert expression is captured mid-stride, weaving through a series of red, white, and green poles on a green artificial turf field.",
-    "video": "media/comparisons/q005.mp4?v=ordered-20261003",
-    "poster": "media/posters/q005.jpg?v=ordered-20261003",
-    "thumbnail": "media/thumbnails/q005.jpg?v=ordered-20261003",
-    "methods": [
-      "wan",
-      "dpo",
-      "ours"
-    ]
-  },
-  {
     "id": "q006",
     "title": "碗池滑板",
     "titleEn": "Skateboarding in a Bowl",
@@ -146,23 +112,6 @@ window.motionInsightComparisons = [
     "video": "media/comparisons/q009.mp4?v=ordered-20261003",
     "poster": "media/posters/q009.jpg?v=ordered-20261003",
     "thumbnail": "media/thumbnails/q009.jpg?v=ordered-20261003",
-    "methods": [
-      "wan",
-      "dpo",
-      "ours"
-    ]
-  },
-  {
-    "id": "q011",
-    "title": "草地人犬互动",
-    "titleEn": "People and Dogs on a Field",
-    "category": "animals",
-    "categoryLabel": "动物交互",
-    "categoryLabelEn": "Animal Interaction",
-    "prompt": "A person wearing a bright yellow jacket and beige pants, standing in a grassy field under a cloudy sky, interacting with dogs.",
-    "video": "media/comparisons/q011.mp4?v=ordered-20261003",
-    "poster": "media/posters/q011.jpg?v=ordered-20261003",
-    "thumbnail": "media/thumbnails/q011.jpg?v=ordered-20261003",
     "methods": [
       "wan",
       "dpo",
